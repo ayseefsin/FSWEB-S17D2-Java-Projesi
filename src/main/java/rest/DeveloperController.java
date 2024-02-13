@@ -30,9 +30,9 @@ public class DeveloperController {
     public DeveloperResponse save(@RequestBody Developer developer){
       Developer createdDeveloper= DeveloperFactory.createdDeveloper(developer,taxable);
       if(Objects.nonNull(createdDeveloper)){
-          developers.put(developer.getId(),developer);
+          developers.put(developer.getId(),createdDeveloper);
       }
-      return new DeveloperResponse("created successfully",developer.getId(),developer.getName(),developer.getSalary(),developer.getExperience());
+      return new DeveloperResponse("created successfully",createdDeveloper.getId(),createdDeveloper.getName(),createdDeveloper.getSalary(),createdDeveloper.getExperience());
     }
     @GetMapping("/")
     public List<Developer> developersList(){
